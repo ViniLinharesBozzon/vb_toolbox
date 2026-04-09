@@ -1,16 +1,16 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="vb-toolbox"
- ,  version="0.1.1"
- ,  package_dir={"":"src"}
- ,  packages=find_packages(where="src")
+    name="vb-toolbox",  
+    version="0.1.1",  
+    package_dir={"":"src"},  
+    packages=find_packages(where="src"),
 
     # Dependências Globais
     install_requires=[
         "pandas"
       , "requests"
-    ]
+    ],
 
     # Dependências Por módulo
     extras_require=
