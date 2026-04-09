@@ -18,6 +18,10 @@ setup(
         "CV":[
                 "tensorflow >=2.0.0"
             ,   "pillow"
+        ],
+        "ML":[
+                "matplotlib"
+            ,   "seaborn"
         ]
     }
 )
