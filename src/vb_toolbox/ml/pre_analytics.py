@@ -1,14 +1,17 @@
 import pandas as pd
 from typing import Optional
 
-def balance_analysis(df: pd.DataFrame, target_column: str, plot: bool = True) -> Optional[pd.DataFrame]:
+def balance_analysis(
+            p_dataFrame: pd.DataFrame
+          , p_targetColumn: str
+          , p_plot: bool = True) -> Optional[pd.DataFrame]:
     """
     Analisa o balanceamento das classes de um dataset.
     
     Args:
-        df (pd.DataFrame): Dataset a ser analisado.
-        target_column (str): Nome da coluna alvo (target).
-        plot (bool): Se True, exibe o gráfico de distribuição usando Seaborn.
+        p_dataFrame (pd.DataFrame): Dataset a ser analisado.
+        p_targetColumn (str): Nome da coluna alvo (target).
+        p_plot (bool): Se True, exibe o gráfico de distribuição usando Seaborn.
         
     Returns:
         pd.DataFrame: Retorna um dataframe com as contagens se precisar usar depois, 
@@ -18,8 +21,8 @@ def balance_analysis(df: pd.DataFrame, target_column: str, plot: bool = True) ->
     print("-" * 40)
 
     # Frequência absoluta e relativa
-    counts = df[target_column].value_counts()
-    proporcoes = df[target_column].value_counts(normalize=True)
+    counts = p_dataFrame[p_targetColumn].value_counts()
+    proporcoes = p_dataFrame[p_targetColumn].value_counts(normalize=True)
 
     print("Frequência absoluta:")
     print(counts.to_string(), "\n")
@@ -59,14 +62,14 @@ def balance_analysis(df: pd.DataFrame, target_column: str, plot: bool = True) ->
         print("- Usar métricas robustas (F1-score, ROC-AUC ou PR-AUC)")
 
     # Plotagem protegida por Lazy Import
-    if plot:
+    if p_plot:
         try:
             import matplotlib.pyplot as plt
             import seaborn as sns
             
             plt.figure(figsize=(6, 4))
             # O warning do palette pode ser suprimido definindo hue
-            sns.countplot(x=target_column, data=df, hue=target_column, palette="viridis", legend=False)
+            sns.countplot(x=p_targetColumn, data=p_dataFrame, hue=p_targetColumn, palette="viridis", legend=False)
             plt.title("Distribuição das Classes")
             plt.xlabel("Classe")
             plt.ylabel("Contagem")
