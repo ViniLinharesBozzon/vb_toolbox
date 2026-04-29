@@ -22,6 +22,9 @@ setup(
         "ML":[
                 "matplotlib"
             ,   "seaborn"
+        ],
+        "Ingestion":[
+                "pyspark"
         ]
     }
 )
