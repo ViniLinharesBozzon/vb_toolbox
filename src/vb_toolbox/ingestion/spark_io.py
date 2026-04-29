@@ -39,7 +39,7 @@ def f_set_dataframe2Parquet(
     return None
 
 
-def f_save_dataframe_to_bronze(
+def f_set_dataframe2Table(
      p_dataframe                            # O objeto DataFrame que você já criou
    , p_table_name   : str                   # Nome da tabela (ex: alura_alunos)
    , p_schema_name  : str                   # Nome do Banco de Dados
@@ -51,10 +51,10 @@ def f_save_dataframe_to_bronze(
     Ideal para cargas manuais ou agendadas (não-streaming).
     """
     
-    # Criando o database caso não exista
+    # Criando o schema caso não exista
     f_set_createSchema(p_schema_name)
     
-    # Monta o nome final: bronze.alura_alunos
+    # Monta o nome final: bronze.alura.t_alura_alunos
     full_table_name = f"{p_catalog_name}.{p_schema_name}.{p_table_name}"
     
     print(f"--- Iniciando Gravação (Batch) ---")
@@ -65,10 +65,10 @@ def f_save_dataframe_to_bronze(
     writer = p_dataframe.write.format("delta").mode(p_mode)
     
     # 3. Tratamento de Schema (A mágica da Bronze)
-    if p_mode == "append":
+    if p_mode.upper() == "APPEND":
         # Se for adicionar, aceita colunas novas que aparecerem (Evolução de Schema)
         writer = writer.option("mergeSchema", "true")
-    elif p_mode == "overwrite":
+    elif p_mode.upper() == "OVERWRITE":
         # Se for sobrescrever, força o novo schema do DataFrame sobre a tabela antiga
         writer = writer.option("overwriteSchema", "true")
         
