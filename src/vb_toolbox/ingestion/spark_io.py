@@ -49,6 +49,16 @@ def f_set_dataframe2Table(
     """
     Grava um DataFrame da memória para uma Tabela Delta Física (Batch/Job).
     Ideal para cargas manuais ou agendadas (não-streaming).
+    
+    Args:
+        p_dataframe: O objeto DataFrame (Spark) a ser gravado.
+        p_table_name (str): Nome da tabela destino (ex: alura_alunos).
+        p_schema_name (str): Nome do schema/banco de dados.
+        p_catalog_name (str, opcional): Nome do catálogo. Padrão é "bronze".
+        p_mode (str, opcional): Modo de gravação ('append' ou 'overwrite'). Padrão é "append".
+        
+    Returns:
+        None.
     """
     
     # Criando o schema caso não exista
