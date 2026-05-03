@@ -1,23 +1,5 @@
 # Preciso algo que pegue seu spark ou pandas dataframe e transforme em arquivo parquet isinstance(v_testeTexto_pd,pd.DataFrame)
 # E preciso que faça a camada de delta parquet
-# from pyspark.sql import SparkSession
-# def f_set_createSchema(
-#         p_schema_name: str
-#         spark = SparkSession
-# ) -> None:
-#     """
-#     Cria um banco de dados/schema no Spark caso ele não exista.
-    
-#     Args:
-#         p_schema_name (str): Nome do schema a ser criado.
-
-#     Returns:
-#         None.
-#     """
-
-#     print(f"✅ Criando schema: {p_schema_name} caso não existisse")
-#     spark.sql(f"CREATE SCHEMA IF NOT EXISTS {p_schema_name}")
-#     return None
  
 def f_set_dataframe2Parquet(
     p_dataframe
@@ -61,9 +43,6 @@ def f_set_dataframe2Table(
     Returns:
         None.
     """
-    
-    # # Criando o schema caso não exista
-    # f_set_createSchema(p_schema_name)
     
     # Monta o nome final: bronze.alura.t_alura_alunos
     full_table_name = f"{p_catalog_name}.{p_schema_name}.{p_table_name}"
