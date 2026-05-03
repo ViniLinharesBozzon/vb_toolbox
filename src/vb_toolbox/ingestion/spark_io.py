@@ -18,7 +18,7 @@
 #     print(f"✅ Criando schema: {p_schema_name} caso não existisse")
 #     spark.sql(f"CREATE SCHEMA IF NOT EXISTS {p_schema_name}")
 #     return None
-
+ 
 def f_set_dataframe2Parquet(
     p_dataframe
  ,  p_pathTarget    : str
